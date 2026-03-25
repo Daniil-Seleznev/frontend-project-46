@@ -1,8 +1,10 @@
 {
   "name": "@hexlet/code",
   "version": "1.0.0",
-  "type": "module",
   "main": "index.js",
+  "bin": {
+    "gendiff": "./src/cli.js"
+  },
   "scripts": {
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
