@@ -4,7 +4,7 @@ const getFormatter = require('./src/formatters')
 // Вспомогательная функция для рекурсивного сравнения
 const buildDiff = (obj1, obj2) => {
   const keys = Array.from(new Set([...Object.keys(obj1), ...Object.keys(obj2)])).sort()
-  return keys.map(key => {
+  return keys.map((key) => {
     const val1 = obj1[key]
     const val2 = obj2[key]
     if (val1 && typeof val1 === 'object' && val2 && typeof val2 === 'object' && !Array.isArray(val1) && !Array.isArray(val2)) {

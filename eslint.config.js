@@ -14,7 +14,7 @@ export default [
       'stylistic/comma-dangle': ['error', 'always-multiline'], // следит за запятыми
       'stylistic/no-multiple-empty-lines': ['error', { max: 0 }],
       'stylistic/no-multi-spaces': 'error',
-      'stylistic/arrow-parens': ['error', 'as-needed'],
+      'stylistic/arrow-parens': ['error', 'always'],
       // General
       'no-undef': 'error',
       'no-unused-vars': ['error', { argsIgnorePattern: '^_' }], // игнорировать _args

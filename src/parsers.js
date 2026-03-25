@@ -2,7 +2,7 @@
 const fs = require('fs')
 const path = require('path')
 const yaml = require('js-yaml')
-const parseFile = filepath => {
+const parseFile = (filepath) => {
   const ext = path.extname(filepath).toLowerCase()
   const content = fs.readFileSync(filepath, 'utf8')
   if (ext === '.json') {

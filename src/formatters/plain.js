@@ -1,5 +1,5 @@
 // src/formatters/plain.js
-const formatValue = value => {
+const formatValue = (value) => {
   if (value === undefined) return '[undefined]' // Можно заменить на null или другую метку
   if (value && typeof value === 'object') {
     return '[complex value]'
@@ -10,7 +10,7 @@ const formatValue = value => {
   return String(value)
 }
 const iter = (diffTree, parent = '') => {
-  const lines = diffTree.flatMap(node => {
+  const lines = diffTree.flatMap((node) => {
     const property = parent ? `${parent}.${node.key}` : node.key
     switch (node.type) {
       case 'added':
@@ -29,4 +29,4 @@ const iter = (diffTree, parent = '') => {
   })
   return lines.join('\n')
 }
-module.exports = diffTree => iter(diffTree)
+module.exports = (diffTree) => iter(diffTree)
