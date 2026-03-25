@@ -1,35 +1,35 @@
 // src/formatters/plain.js
 const formatValue = (value) => {
-  if (value === undefined) return '[undefined]'; // Можно заменить на null или другую метку
+  if (value === undefined) return '[undefined]' // Можно заменить на null или другую метку
   if (value && typeof value === 'object') {
-    return '[complex value]';
+    return '[complex value]'
   }
   if (typeof value === 'string') {
-    return `'${value}'`;
+    return `'${value}'`
   }
-  return String(value);
-};
+  return String(value)
+}
 
 const iter = (diffTree, parent = '') => {
   const lines = diffTree.flatMap((node) => {
-    const property = parent ? `${parent}.${node.key}` : node.key;
+    const property = parent ? `${parent}.${node.key}` : node.key
 
     switch (node.type) {
       case 'added':
-        return `Property '${property}' was added with value: ${formatValue(node.value2)}`;
+        return `Property '${property}' was added with value: ${formatValue(node.value2)}`
       case 'removed':
-        return `Property '${property}' was removed`;
+        return `Property '${property}' was removed`
       case 'updated':
-        return `Property '${property}' was updated. From ${formatValue(node.value1)} to ${formatValue(node.value2)}`;
+        return `Property '${property}' was updated. From ${formatValue(node.value1)} to ${formatValue(node.value2)}`
       case 'nested':
-        return iter(node.children, property);
+        return iter(node.children, property)
       case 'unchanged':
-        return [];
+        return []
       default:
-        throw new Error(`Unknown type: ${node.type}`);
+        throw new Error(`Unknown type: ${node.type}`)
     }
-  });
-  return lines.join('\n');
-};
+  })
+  return lines.join('\n')
+}
 
-module.exports = (diffTree) => iter(diffTree);
+module.exports = (diffTree) => iter(diffTree)

@@ -1,9 +1,8 @@
 #!/usr/bin/env node
-import { Command } from 'commander';
-import genDiff from '../index.js';
-import parseFile from '../src/parsers.js';
+import { Command } from 'commander'
+import genDiff from '../index.js'
 
-const program = new Command();
+const program = new Command()
 
 program
   .name('gendiff')
@@ -14,9 +13,9 @@ program
   .option('-f, --format <type>', 'output format', 'stylish')
   .action((filepath1, filepath2, options) => {
     // Передаём строки, а не объект
-    const diff = genDiff(filepath1, filepath2, options.format);
-    console.log(diff);
-  });
+    const diff = genDiff(filepath1, filepath2, options.format)
+    console.log(diff)
+  })
 
-program.parse();
+program.parse()
 
