@@ -1,6 +1,5 @@
 // src/formatters/stylish.js
-const indent = (depth) => ' '.repeat(depth * 4)
-
+const indent = depth => ' '.repeat(depth * 4)
 const formatValue = (value, depth) => {
   if (value === undefined) return '[undefined]' // Или '[complex value]' по желанию
   if (value !== null && typeof value === 'object') {
@@ -11,12 +10,11 @@ const formatValue = (value, depth) => {
   }
   return value === null ? 'null' : String(value)
 }
-
 const formatNode = (node, depth = 1) => {
   switch (node.type) {
     case 'nested':
       return `${indent(depth)}${node.key}: {\n${node.children
-        .map((child) => formatNode(child, depth + 1))
+        .map(child => formatNode(child, depth + 1))
         .join('\n')}\n${indent(depth)}}`
     case 'added':
       return `${indent(depth - 1)}  + ${node.key}: ${formatValue(node.value2, depth)}`
@@ -33,5 +31,4 @@ const formatNode = (node, depth = 1) => {
       throw new Error(`Unknown type: ${node.type}`)
   }
 }
-
-module.exports = (diffTree) => `{\n${diffTree.map((node) => formatNode(node)).join('\n')}\n}`
+module.exports = diffTree => `{\n${diffTree.map(node => formatNode(node)).join('\n')}\n}`
