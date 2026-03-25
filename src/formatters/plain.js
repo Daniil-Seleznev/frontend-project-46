@@ -29,4 +29,4 @@ const iter = (diffTree, parent = '') => {
   })
   return lines.join('\n')
 }
-module.exports = (diffTree) => iter(diffTree)
+module.exports = diffTree => iter(diffTree)
